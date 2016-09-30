@@ -1,0 +1,51 @@
+zookeeper1:
+  image: registry.mo.sap.corp:5000/confluent/zookeeper
+  hostname: zoo1
+  extra_hosts:
+    - "zoo2:10.9.38.56"
+    - "zoo3:10.9.38.205"
+  ports:
+    - "2181:2181"
+    - "2888:2888"
+    - "3888:3888"
+
+  environment:  
+    zk_id: 1
+    # Do 0.0.0.0 for the current Zk server that you are configuring, 
+    # using the Public IP wont help to form the Quorum
+    zk_server.1=0.0.0.0:2888:3888
+    zk_server.2=10.9.38.56:2888:3888 
+    zk_server.3=10.9.38.205:2888:3888
+
+
+kafka1:
+  image: registry.mo.sap.corp:5000/confluent/kafka
+  container_name: kafka1
+  ports:
+    - "9092:9092"
+  environment:
+    KAFKA_BROKER_ID: 1
+    # KAFKA_ADVERTISED_HOST_NAME &&  KAFKA_ADVERTISED_PORT is neeeded to 
+    # connect to kafka from outside of the local host machine
+    KAFKA_ADVERTISED_HOST_NAME: 10.9.37.231
+    KAFKA_ADVERTISED_PORT: 9092
+    KAFKA_ZOOKEEPER_CONNECT: 10.9.37.231:2181,10.9.38.56:2181,10.9.38.205:2181
+
+  volumes:
+    - /tmp/docker/kafka1/logs:/logs
+    - /tmp/docker/kafka1/data:/data
+
+
+
+restproxy1:
+  image: registry.mo.sap.corp:5000/confluent/rest-proxy
+  container_name: restproxy1
+  ports:
+    - "8082:8082"
+  environment:
+    REST_PROXY_ID: 1
+    # This can either connect to just the current host / a quorum
+    # quorum is better for node notification one a node goes down
+    RP_ZOOKEEPER_CONNECT: 10.9.37.231:2181,10.9.38.56:2181,10.9.38.205:2181
+
+

@@ -54,7 +54,9 @@ docker run --name kafka-2 -e KAFKA_BROKER_ID=2 -e KAFKA_ZOOKEEPER_CONNECT=10.9.3
 
 docker run --name kafka-3 -e KAFKA_BROKER_ID=3 -e KAFKA_ZOOKEEPER_CONNECT=10.9.37.231:2181,10.9.38.56:2181,10.9.38.205:2181 -e KAFKA_ADVERTISED_HOST_NAME=10.9.38.205 -e KAFKA_ADVERTISED_PORT=9092 -p 9092:9092 confluent/kafka
 
-Adding REST-PROXY to inspect the metadata of the cluster. We can either have one proxy to inspect the entire cluster or can be configured just like the kafka brokers here, by setting the RP_ZOOKEEPER_CONNECT attribute accordingly. We are setting RP_ZOOKEEPER_CONNECT to 10.9.37.231:2181,10.9.38.56:2181,10.9.38.205:2181, as this has information about the quorum level.
+Adding REST-PROXY to inspect the metadata of the cluster. We can either have one proxy to inspect the entire cluster or can be configured just like the kafka brokers here, by setting the RP_ZOOKEEPER_CONNECT attribute accordingly.
+
+We are setting RP_ZOOKEEPER_CONNECT to 10.9.37.231:2181,10.9.38.56:2181,10.9.38.205:2181, as this has information about the quorum level.
 
 **Can be done in one/more nodes:**
 

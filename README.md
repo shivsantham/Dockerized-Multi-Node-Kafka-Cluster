@@ -1,6 +1,6 @@
-                        **Running Multi Node Kafka Cluster On Docker Containers**
+**Running Multi Node Kafka Cluster On Docker Containers**
                                   
-                                  **The Zookeeper Ensemble**
+                                   The Zookeeper Ensemble 
 
 Kafka is dependent on zookeeper, for the following. So in-order to setup a cluster, we need to first configure the zookeeper quorum.
 
@@ -34,7 +34,7 @@ docker run --name zoo-3 -e zk_id=3 -e zk_server.1=10.9.37.231:2888:3888 -e zk_se
 • Replace 0.0.0.0 for the current Zk server that you are configuring, using the Public IP wont help to form the Quorum.
 • The two port numbers after each server name: " 2888" and "3888". Peers use the former port to connect to other peers. Such a connection is necessary so that peers can communicate, for example, to agree upon the order of updates. More specifically, a ZooKeeper server uses this port to connect followers to the leader. When a new leader arises, a follower opens a TCP connection to the leader using this port. Because the default leader election also uses TCP, we currently require another port for leader election.
 
-                                        **Setting up Kafka Nodes**
+                                         Setting up Kafka Nodes
 
 
 Starting 3 kafka brokers in each of the host. We will have to use Kafka advertised host and port to connect outside the localhost. In case, if we are running all these containers in a docker machine, then we should replace the advertised host as the IP of the docker machine.

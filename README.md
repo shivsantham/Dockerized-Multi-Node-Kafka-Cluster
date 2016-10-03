@@ -30,6 +30,7 @@ docker run --name zoo-2 -e zk_id=2 -e zk_server.1=10.9.37.231:2888:3888 -e zk_se
 docker run --name zoo-3 -e zk_id=3 -e zk_server.1=10.9.37.231:2888:3888 -e zk_server.2=10.9.38.56:2888:3888 -e zk_server.3=0.0.0.0:2888:3888 -p 2181:2181 -p 2888:2888 -p 3888:3888 confluent/zookeeper
 
 **Note:** 
+
 • The IP address mentioned here is the IP of the host where the docker containers are running.
 
 • Replace 0.0.0.0 for the current Zk server that you are configuring, using the Public IP wont help to form the Quorum.

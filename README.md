@@ -44,8 +44,7 @@ Starting 3 kafka brokers in each of the host. We will have to use Kafka advertis
 
 **Node1 / Host1:**
 
-docker run --name kafka1 -e KAFKA_BROKER_ID=1 -e   KAFKA_ZOOKEEPER_CONNECT=10.9.37.231:2181,10.9.38.56:2181,10.9.38.205:2181 -e
-KAFKA_ADVERTISED_HOST_NAME=10.9.37.231 -e KAFKA_ADVERTISED_PORT=9092 -p 9092:9092 confluent/kafka
+docker run --name kafka1 -e KAFKA_BROKER_ID=1 -e   KAFKA_ZOOKEEPER_CONNECT=10.9.37.231:2181,10.9.38.56:2181,10.9.38.205:2181 -e KAFKA_ADVERTISED_HOST_NAME=10.9.37.231 -e KAFKA_ADVERTISED_PORT=9092 -p 9092:9092 confluent/kafka
 
 **Node2 / Host2:**
 
@@ -59,7 +58,7 @@ Adding REST-PROXY to inspect the metadata of the cluster. We can either have one
 
 **Can be done in one/more nodes:**
 
-docker run --name rest1  -e REST_PROXY_ID=1 -e RP_ZOOKEEPER_CONNECT=10.9.37.231:2181,10.9.38.56:2181,10.9.38.205:2181 -p 8082:8082 registry.mo.sap.corp:5000/confluent/rest-proxy
+docker run --name rest1  -e REST_PROXY_ID=1 -e RP_ZOOKEEPER_CONNECT=10.9.37.231:2181,10.9.38.56:2181,10.9.38.205:2181 -p 8082:8082 confluent/rest-proxy
 
 If everything is setting up correctly and working fine you will see the docker containers up and running like this. docker ps command would return the following.
 

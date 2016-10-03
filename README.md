@@ -1,12 +1,6 @@
-# Dockerized-Multi-Node-Kafka-Cluster
                         **Running Multi Node Kafka Cluster On Docker Containers**
-
-Pre-requisities:
-
-Docker ( Install docker in the host machine using the instructions mentioned here: https://docs.docker.com/engine/installation/)
-
-
-                                      **The Zookeeper Ensemble**
+                                  
+                                  **The Zookeeper Ensemble**
 
 Kafka is dependent on zookeeper, for the following. So in-order to setup a cluster, we need to first configure the zookeeper quorum.
 

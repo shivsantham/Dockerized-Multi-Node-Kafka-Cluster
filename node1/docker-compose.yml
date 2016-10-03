@@ -1,5 +1,5 @@
 zookeeper1:
-  image: registry.mo.sap.corp:5000/confluent/zookeeper
+  image: confluent/zookeeper
   hostname: zoo1
   extra_hosts:
     - "zoo2:10.9.38.56"
@@ -19,7 +19,7 @@ zookeeper1:
 
 
 kafka1:
-  image: registry.mo.sap.corp:5000/confluent/kafka
+  image: confluent/kafka
   container_name: kafka1
   ports:
     - "9092:9092"
@@ -38,7 +38,7 @@ kafka1:
 
 
 restproxy1:
-  image: registry.mo.sap.corp:5000/confluent/rest-proxy
+  image: confluent/rest-proxy
   container_name: restproxy1
   ports:
     - "8082:8082"

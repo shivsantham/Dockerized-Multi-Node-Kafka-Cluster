@@ -2,15 +2,21 @@
                         **Running Multi Node Kafka Cluster On Docker Containers**
 
 Pre-requisities:
+
 Docker ( Install docker in the host machine using the instructions mentioned here: https://docs.docker.com/engine/installation/)
+
 
                                       **The Zookeeper Ensemble**
 
 Kafka is dependent on zookeeper, for the following. So in-order to setup a cluster, we need to first configure the zookeeper quorum.
+
 A) Electing a controller. The controller is one of the brokers and is responsible for maintaining the leader/follower relationship for all the partitions. When a node shuts down, it is the controller that tells other replicas to become partition leaders to replace the partition leaders on the node that is going away. Zookeeper is used to elect a controller, make sure there is only one and elect a new one it if it crashes.
+
 B) Cluster membership - which brokers are alive and part of the cluster? this is also managed through ZooKeeper.
 Topic configuration - which topics exist, how many partitions each has, where are the replicas, who is the preferred leader, what configuration overrides are set for each topic
+
 C) Quotas - how much data is each client allowed to read and write
+
 D) ACLs - who is allowed to read and write to which topic
 (old high level consumer) - Which consumer groups exist, who are their members and what is the latest offset each group got from each partition.
 

@@ -62,7 +62,7 @@ We are setting RP_ZOOKEEPER_CONNECT to 10.9.37.231:2181,10.9.38.56:2181,10.9.38.
 
 docker run --name rest1  -e REST_PROXY_ID=1 -e RP_ZOOKEEPER_CONNECT=10.9.37.231:2181,10.9.38.56:2181,10.9.38.205:2181 -p 8082:8082 confluent/rest-proxy
 
-NOTE: REST_PROXY has no mechanism like quorum. So need a load balancer in place when there are multiple REST proxies.
+NOTE: REST_PROXY has no mechanism like quorum. So a load balancer is needed when there are multiple REST proxies.
 
 If everything is setting up correctly and working fine you will see the docker containers up and running like this. docker ps command would return the following.
 

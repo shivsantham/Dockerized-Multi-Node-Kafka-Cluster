@@ -13,9 +13,9 @@ zookeeper3:
     zk_id: 3
     # Do 0.0.0.0 for the current Zk server that you are configuring, 
     # using the Public IP wont help to form the Quorum
-    zk_server.1=10.9.37.231:2888:3888
-    zk_server.2=10.9.38.56:2888:3888 
-    zk_server.3=0.0.0.0:2888:3888
+    zk_server.1: 10.9.37.231:2888:3888
+    zk_server.2: 10.9.38.56:2888:3888 
+    zk_server.3: 0.0.0.0:2888:3888
 
 
 kafka3:
